@@ -13,6 +13,7 @@ import { Separator } from "@/components/ui/separator"
 import ConfettiExplosion from 'react-confetti-explosion';
 import { Button } from '@/components/ui/button';
 import { Link } from "react-router-dom";
+import { data1 } from '@/data';
 
 const Quiz = () => {
     const confettiOptions = {
@@ -25,12 +26,7 @@ const Quiz = () => {
     const [answers,setAnswers] = useState([]);
     const [quizdone,setQuizdone] = useState(false);
     const [score,setScore] = useState(0);
-    const quiz = [
-        {text:'What is openAI 1 ?',options:['Opt 1','Opt 2','Opt 3','Opt 4'],answer:'Opt 2'},
-        {text:'What is openAI 2 ?',options:['Opt 1','Opt 2','Opt 3','Opt 4'],answer:'Opt 3'},
-        {text:'What is openAI 3 ?',options:['Opt 1','Opt 2','Opt 3','Opt 4'],answer:'Opt 4'},
-        {text:'What is openAI 4 ?',options:['Opt 1','Opt 2','Opt 3','Opt 4'],answer:'Opt 1'},
-    ];
+    const quiz = data1;
     const saveAnswer = (e,q) => {
         let newAnswers = answers;
         newAnswers.push({
@@ -54,7 +50,7 @@ const Quiz = () => {
             </div>}
         </CardHeader>
         <CardContent>
-            <div className='w-[400px]'>
+            <div className='w-[100vh]'>
 
                 {!quizdone && quiz.map((x,i) => {
                     if((i + 1) == question){

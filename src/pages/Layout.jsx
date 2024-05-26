@@ -12,7 +12,7 @@ const Layout = () => {
     return (<div className={`${mode} bg-background transition-all ease-linear duration-100`}>
     <div className='h-screen items-center justify-start flex flex-col'>
     <h1 className="text-4xl dark:text-white font-bold mb-8 mt-20">
-      QUIZ APP
+        Nguyễn Đức Chính, KH38B
     </h1>  
     <Outlet />
     <Button className='absolute bottom-5 px-2 py-0' onClick={()=>{changeMode()}}>

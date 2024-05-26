@@ -8,19 +8,23 @@ const Question = (props) => {
     const [answer,setAnswer] = useState('');
     const [submitted,setSubmitted] = useState(false);
     const submitAnswer = () => {
+        if (!answer) {
+            alert('Chưa chọn đáp án nào!');
+            return;
+        }
         setSubmitted(true);
     }
     const nextQuestion = () => {
-        props.save(answer == props.data.answer)
+        props.save(answer == props.data.options[props.data.answer - 1])
     }
     const checkAnswer = (val) => {
-        if(val == answer && val == props.data.answer){
+        if(val == answer && val == props.data.options[props.data.answer - 1]){
             return true;
         }
-        if(val == answer && val != props.data.answer){
+        if(val == answer && val != props.data.options[props.data.answer - 1]){
             return false;
         }
-        if(val != answer && val == props.data.answer){
+        if(val != answer && val == props.data.options[props.data.answer - 1]){
         return true;
         }
     }
@@ -31,8 +35,8 @@ const Question = (props) => {
                 return <div key={i} className={`${answer == x ? 'border-[#aaa]' : ''} border px-2 py-2 mt-1 mb-1 rounded flex justify-between items-center cursor-pointer`} 
                 onClick={()=> submitted ? '' : setAnswer(x)}>
                     <span>{x}</span>
-                    {submitted && checkAnswer(x) == true && <FaCheckCircle size={20} color='#0cde0c'></FaCheckCircle>} 
-                    {submitted && checkAnswer(x) == false && <FaTimesCircle size={20} color='#de3c3c'></FaTimesCircle>}
+                    {submitted && checkAnswer(x) == true && <FaCheckCircle size={40} color='#0cde0c'></FaCheckCircle>} 
+                    {submitted && checkAnswer(x) == false && <FaTimesCircle size={40} color='#de3c3c'></FaTimesCircle>}
                 </div>
             })}
             <Separator className="my-2" />
